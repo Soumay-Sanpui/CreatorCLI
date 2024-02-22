@@ -1,0 +1,11 @@
+{
+    "index_file_content": "import express from 'express'\nimport cors from 'cors'\n\nconst app = express()\n\napp.use(cors())\napp.use(express.json())\n\n// Add your additional code here",
+
+    "app_file_content": "",
+
+    "env_file_content" : "MONGO_URI=YOUR_MONOGO_URI\nPORT=PORT_NUMBER\nACCESS_TOKEN_SECRET=YOUR_AC_SECRET\nACCESS_TOKEN_)EXPIRY=1d\nREFRESH_TOKEN_SECRET=YOUR_RF_SECRET\nREFRESH_TOKEN_EXPIRY=10d\nCLOUDINARY_CLOUD_NAME=YOUR_CLOUD_NAME\nCLOUDINARY_API_SECRET=YOUR_API_SECRET",
+
+    "apiResponse_file_content" : "class ApiResponse {\n\tconstructor(statusCode, data, message = 'success') {\n\t\tthis.statusCode = statusCode\n\t\tthis.data = data\n\t\tthis.message = message\n\t\tthis.success = statusCode < 400\n\t}\n}\nexport {ApiResponse}",
+
+    "db_file_content" : "import mongoose from 'mongoose';\n\nconst connectToMongoDB = async (mongoURI) => {\n    try {\n        await mongoose.connect(mongoURI);\n        console.log('Successfully connected to MongoDB!');\n    } catch (error) {\n        console.error(`Error connecting to MongoDB: ${error.message}`);\n    }\n};\n\nexport default connectToMongoDB;"
+}
