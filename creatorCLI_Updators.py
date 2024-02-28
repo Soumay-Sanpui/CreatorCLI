@@ -1,5 +1,5 @@
 # creatorCLI_Updators.py
-import creatorCLI_IMPORTS
+from creatorCLI_IMPORTS import os, json
 
 def update_file(directory_name, current_directory, script_directory, source_key, destination_file):
   """Updates the content of a file based on a provided source key.
@@ -41,19 +41,19 @@ def update_file(directory_name, current_directory, script_directory, source_key,
     print(f"Error updating {destination_file}: {e}")
 
   # Update user.model.js in the src/models directory
-  if destination_file == "user.model.js":
-    src_model_path = os.path.join(current_directory, directory_name, 'src', 'models', 'user.model.js')
+  # if destination_file == "user.model.js":
+  #   src_model_path = os.path.join(current_directory, directory_name, 'src', 'models', 'user.model.js')
 
-    try:
-      # Ensure src/models/user.model.js is writable before updating
-      if not os.access(src_model_path, os.W_OK):
-        os.chmod(src_model_path, os.stat(src_model_path).st_mode | 0o666)
+  #   try:
+  #     # Ensure src/models/user.model.js is writable before updating
+  #     if not os.access(src_model_path, os.W_OK):
+  #       os.chmod(src_model_path, os.stat(src_model_path).st_mode | 0o666)
 
-      with open(src_model_path, 'w') as src_model_file:
-        src_model_file.write(file_content)
-      print(f"{destination_file} updated successfully in src/models directory ✨")
-    except Exception as e:
-      print(f"Error updating {destination_file} in src/models directory: {e}")
+  #     with open(src_model_path, 'w') as src_model_file:
+  #       src_model_file.write(file_content)
+  #     print(f"{destination_file} updated successfully in src/models directory ✨")
+  #   except Exception as e:
+  #     print(f"Error updating {destination_file} in src/models directory: {e}")
 
 # This line is only needed if you want to call the function directly for testing
 # update_file("my_directory", os.getcwd(), "/path/to/script", "my_key", "my_file.txt")

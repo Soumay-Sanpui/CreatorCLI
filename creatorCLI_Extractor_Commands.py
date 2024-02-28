@@ -1,8 +1,5 @@
 # creatorCLI_Extractor_Commands.py
-import os
-import subprocess as sp
-from creatorCLI_OptionsList import backend_commandList, dirOptions, git_commandList, node_commandList, UsermodelGeneration_commandList
-from creatorCLI_Updators import update_file
+from creatorCLI_IMPORTS import *
 
 def create_directory(current_directory, directory_name):
     try:
@@ -57,15 +54,13 @@ def single_dir_gen(opt):
     except Exception as e:
         print(f"❌ Error: {e}")
 
-def run_user_model_commands(current_directory, directory_name, script_directory):
+def run_model_commands(current_directory, directory_name, script_directory,model_commands):
     try:
-        for user_model_command in UsermodelGeneration_commandList:
+        for user_model_command in model_commands:
             sp.run(user_model_command, shell=True, check=True, text=True,
                    cwd=os.path.join(current_directory, directory_name))
-
-        update_file(directory_name, current_directory, script_directory, "user_model_content",
-                    "src/model/user.model.js")
 
         print("Generated USER Model ✨")
     except Exception as e:
         print(f"❌ Error: {e}")
+

@@ -1,4 +1,7 @@
-import creatorCLI_IMPORTS
+from creatorCLI_IMPORTS import *
+
+# NOTE:
+print(f"{'\033[91m'}{'\033[1m'} ℹ NPM COMMANDS ARE DISABLED FOR TESTING........ ℹ \n{'\033[1m'}{'\033[91m'}" *10)
 
 def saga_commands(commands):
     global current_directory
@@ -7,19 +10,16 @@ def saga_commands(commands):
     except Exception as e:
         print(f"❌ Error: {e}")
 
-
 def saga():
     global script_directory
     try:
         # Define the commands to be run
-        commands = f"py {__file__} .b backend -g"
+        commands = f"py {__file__} .b backend --getuser --getpost --getproductcatalog --getmessaging --getcontentmanagement --getsocialnetwork -g"
         # Run the commands
         saga_commands(commands)
     except Exception as e:
         print(f"❌ Error: {e}")
 
-
-# Call the saga function when the script is executed with "SAGA" argument
 def copyUtility(src, des):
     global directory_name
     global script_directory
@@ -67,10 +67,8 @@ def configUpdater():
     except Exception as e:
         print(f"❌ Error: {e}")
 
-
 def gitHandler():
     copyUtility("ignoreContent_doc.txt", ".gitignore")
-
 
 def singleDirGen(opt):
     global current_directory
@@ -89,6 +87,49 @@ def singleDirGen(opt):
     except Exception as e:
         print(f"❌ Error: {e}")
 
+def modelGenerator(modelCommandList,modelContent,modelPath,modelFileName="model.js"):
+    run_model_commands(current_directory, directory_name, script_directory,modelCommandList)
+    update_file(directory_name,current_directory,script_directory,modelContent,modelPath)
+    print(f"Updated {modelFileName} ✨")
+
+def noInstallConfigUpdate():
+    print("Updating configuration files...")
+    configUpdater()
+    update_file(directory_name, current_directory, script_directory, "env_file_content",
+                ".env")  # Update .env file
+    print("Updated .env file")
+    update_file(directory_name, current_directory, script_directory, "apiResponse_file_content",
+                "src/utils/ApiResponse.js")  # Update ApiResponse.js
+    print("Updated ApiResponse.js")
+    update_file(directory_name, current_directory, script_directory, "index_file_content",
+                "index.js")  # Update index.js
+    print("Updated index.js")
+    update_file(directory_name, current_directory, script_directory, "app_file_content",
+                "app.js")  # Update app.js
+    print("Updated app.js")
+
+def handle_model_command(sys_arg):
+    if sys_arg == "--getuser":
+        modelGenerator(UsermodelGeneration_commandList, "user_model_content", "src/models/user.model.js","user.model.js")
+    elif sys_arg == "--getpost":
+        modelGenerator(PostmodelGeneration_commandList, "post_model_content", "src/models/post.model.js","post.model.js")
+    elif sys_arg == "--getproductcatalog":
+        modelGenerator(ProductCatalogmodelGeneration_commandList, "productCatalog_model_content", "src/models/productCatalog.model.js", "productCatalog.model.js")
+    elif sys_arg == "--getmessaging":
+        modelGenerator(MessagingmodelGeneration_commandList, "messaging_model_content", "src/models/messaging.model.js", "messaging.model.js")
+    elif sys_arg == "--geteventscheduling":
+        modelGenerator(EventSchedulingmodelGeneration_commandList, "eventScheduling_model_content", "src/models/eventScheduling.model.js", "event_scheduling.model.js")
+    elif sys_arg == "--getlocationbased":
+        modelGenerator(LocationBasedmodelGeneration_commandList, "locationBased_model_content", "src/models/locationBased.model.js", "location_based.model.js")
+    elif sys_arg == "--getcontentmanagement":
+        modelGenerator(ContentManagementmodelGeneration_commandList, "contentManagement_model_content", "src/models/contentManagement.model.js", "content_management.model.js")
+    elif sys_arg == "--getfinancialtransaction":
+        modelGenerator(FinancialTransactionmodelGeneration_commandList, "financialTransaction_model_content","src/models/financialTransaction.model.js", "financial_transaction.model.js")
+    elif sys_arg == "--getanalytics":
+        modelGenerator(AnalyticsmodelGeneration_commandList, "analytics_model_content", "src/models/analytics.model.js", "analytics.model.js")
+    elif sys_arg == "--getsocialnetwork":
+        modelGenerator(SocialNetworkmodelGeneration_commandList, "socialNetwork_model_content", "src/models/socialNetwork.model.js", "social_network.model.js")
+
 
 def extractor():
     global directory_name
@@ -102,40 +143,21 @@ def extractor():
         if sys.argv[i] == ".b" and i + 1 < total_args:
             directory_name = sys.argv[i + 1]
             try:
-                # Check if the no-i flag is provided
                 if "no-i" in sys.argv[i + 2:]:
                     no_install = True
-                    # Skip to the next argument
                     i += 1
 
-                # Create the directory relative to the current working directory
                 create_directory(current_directory, directory_name)
 
-                # Run node commands if installation is not skipped
                 if not no_install:
                     run_node_commands(current_directory, directory_name)
 
-                # Run backend commands
                 run_backend_commands(current_directory, directory_name)
 
-                # Update the config after running commands if no_install is false
                 if not no_install:
-                    print("Updating configuration files...")
-                    configUpdater()
-                    update_file(directory_name, current_directory, script_directory, "env_file_content",
-                                ".env")  # Update .env file
-                    print("Updated .env file")
-                    update_file(directory_name, current_directory, script_directory, "apiResponse_file_content",
-                                "src/utils/ApiResponse.js")  # Update ApiResponse.js
-                    print("Updated ApiResponse.js")
-                    update_file(directory_name, current_directory, script_directory, "index_file_content",
-                                "index.js")  # Update index.js
-                    print("Updated index.js")
-                    update_file(directory_name, current_directory, script_directory, "app_file_content",
-                                "app.js")  # Update app.js
-                    print("Updated app.js")
+                    noInstallConfigUpdate()
 
-                i += 2  # Skip both ".b" and directory name arguments
+                i += 2
             except Exception as e:
                 print(f"❌ Error: {e}")
                 break
@@ -149,21 +171,18 @@ def extractor():
                 print("❌ Error in git command.")
 
         elif sys.argv[i].startswith("-d"):
-            # Extract the option from the argument
             opt = sys.argv[i][2:]
             single_dir_gen(current_directory, directory_name, opt)
             i += 1
         elif sys.argv[i].startswith("SAGA"):
-            # Call saga function
             saga()
-            break  # Exit loop after executing SAGA command
-        elif sys.argv[i] == "--getuser":
-            run_user_model_commands(current_directory, directory_name, script_directory)
-            update_file(directory_name, current_directory, script_directory, "user_model_content", "src/models/user.model.js")
-            print("Updated user.model.js")
             break
+
+        elif sys.argv[i].startswith("--get"):
+           handle_model_command(sys.argv[i])
+           i += 1
+
         else:
             i += 1
             break
-
 extractor()

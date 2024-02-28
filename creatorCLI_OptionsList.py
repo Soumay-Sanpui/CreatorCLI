@@ -1,5 +1,6 @@
 # creatorCLI_OptionsList.py
-node_commandList = ["npm init -y", "npm i express mongoose cors bcrypt jsonwebtoken multer cloudinary", "npm i -D nodemon"]
+# NOTE: BLOCKED FOR TESTING PURPOSE
+node_commandList = ["npm init -y"] #, "npm i dotenv express mongoose cors bcrypt jsonwebtoken multer cloudinary", "npm i -D nodemon"
 
 backend_commandList = [
     "type nul > .env",
@@ -17,9 +18,24 @@ backend_commandList = [
     "mkdir src\\routes",
 ]
 
+# Options for generating different model files
 UsermodelGeneration_commandList = [
-    "type nul > src\\models\\user.model.js",
+    "echo 🛠️ Creating user model file... && type nul > src\\models\\user.model.js",
+    # Add more commands for generating other user-related models here
 ]
+
+PostmodelGeneration_commandList = ["echo 📝 Creating post model file... && type nul > src\\models\\post.model.js",]
+ProductCatalogmodelGeneration_commandList = ["echo 📦 Creating product catalog model file... && type nul > src\\models\\productCatalog.model.js",]
+MessagingmodelGeneration_commandList = ["echo 📨 Creating messaging model file... && type nul > src\\models\\messaging.model.js",]
+EventSchedulingmodelGeneration_commandList = ["echo 📅 Creating event scheduling model file... && type nul > src\\models\\eventScheduling.model.js",]
+LocationBasedmodelGeneration_commandList = ["echo 🗺️ Creating location-based model file... && type nul > src\\models\\locationBased.model.js",]
+ContentManagementmodelGeneration_commandList = ["echo 📄 Creating content management model file... && type nul > src\\models\\contentManagement.model.js",]
+FinancialTransactionmodelGeneration_commandList = ["echo 💰 Creating financial transaction model file... && type nul > src\\models\\financialTransaction.model.js",]
+AnalyticsmodelGeneration_commandList = ["echo 📊 Creating analytics model file... && type nul > src\\models\\analytics.model.js",]
+SocialNetworkmodelGeneration_commandList = ["echo 👥 Creating social network model file... && type nul > src\\models\\socialNetwork.model.js",]
+PollmodelGeneration_commandList = ["echo 📊 Creating poll model file... && type nul > src\\models\\poll.model.js",]
+NotificationmodelGeneration_commandList = ["echo 📩 Creating notification model file... && type nul > src\\models\\notification.model.js",]
+ProductReviewmodelGeneration_commandList = ["echo 🌟 Creating product review model file... && type nul > src\\models\\productReview.model.js",]
 
 dirOptions = {
     "--mdl": "models",
