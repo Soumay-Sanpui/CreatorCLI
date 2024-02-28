@@ -1,16 +1,25 @@
-import os
-import sys
-import json
-import subprocess as sp
-from creatorCLI_Updators import update_file
-from creatorCLI_OptionsList import backend_commandList,dirOptions,git_commandList,node_commandList
+import creatorCLI_IMPORTS
 
-# Globals
-script_directory = os.path.dirname(os.path.abspath(__file__))
-directory_name = ""
-current_directory = ""
+def saga_commands(commands):
+    global current_directory
+    try:
+        sp.run(commands, shell=True, check=True, text=True, cwd=current_directory)
+    except Exception as e:
+        print(f"❌ Error: {e}")
 
 
+def saga():
+    global script_directory
+    try:
+        # Define the commands to be run
+        commands = f"py {__file__} .b backend -g"
+        # Run the commands
+        saga_commands(commands)
+    except Exception as e:
+        print(f"❌ Error: {e}")
+
+
+# Call the saga function when the script is executed with "SAGA" argument
 def copyUtility(src, des):
     global directory_name
     global script_directory
@@ -58,8 +67,10 @@ def configUpdater():
     except Exception as e:
         print(f"❌ Error: {e}")
 
+
 def gitHandler():
     copyUtility("ignoreContent_doc.txt", ".gitignore")
+
 
 def singleDirGen(opt):
     global current_directory
@@ -71,13 +82,13 @@ def singleDirGen(opt):
         if opt in dirOptions:
             dir_name = dirOptions[opt]
             # Create the directory
-            sp.run(f"mkdir src\\{dir_name}", shell=True, check=True,
-                   cwd=os.path.join(current_directory, directory_name))
+            create_directory(os.path.join(current_directory, directory_name), f"src\\{dir_name}")
             print(f"✨ Directory '{dir_name}' created ✨")
         else:
             print(f"❌ Error: Unknown option '{opt}' 🥶")
     except Exception as e:
         print(f"❌ Error: {e}")
+
 
 def extractor():
     global directory_name
@@ -98,27 +109,31 @@ def extractor():
                     i += 1
 
                 # Create the directory relative to the current working directory
-                sp.run(f"mkdir {directory_name}", shell=True, check=True, cwd=current_directory)
+                create_directory(current_directory, directory_name)
 
                 # Run node commands if installation is not skipped
                 if not no_install:
-                    for node_command in node_commandList:
-                        sp.run(node_command, shell=True, check=True, text=True,
-                               cwd=os.path.join(current_directory, directory_name))
+                    run_node_commands(current_directory, directory_name)
 
                 # Run backend commands
-                for backend_command in backend_commandList:
-                    sp.run(backend_command, shell=True, check=True, text=True,
-                           cwd=os.path.join(current_directory, directory_name))
+                run_backend_commands(current_directory, directory_name)
 
                 # Update the config after running commands if no_install is false
                 if not no_install:
                     print("Updating configuration files...")
                     configUpdater()
-                    update_file(directory_name, current_directory, script_directory, "env_file_content", ".env")  # Update .env file
-                    update_file(directory_name, current_directory, script_directory, "apiResponse_file_content", "src/utils/ApiResponse.js")  # Update ApiResponse.js
-                    update_file(directory_name, current_directory, script_directory, "index_file_content", "index.js")  # Update index.js
-                    update_file(directory_name, current_directory, script_directory, "app_file_content", "app.js")  # Update app.js
+                    update_file(directory_name, current_directory, script_directory, "env_file_content",
+                                ".env")  # Update .env file
+                    print("Updated .env file")
+                    update_file(directory_name, current_directory, script_directory, "apiResponse_file_content",
+                                "src/utils/ApiResponse.js")  # Update ApiResponse.js
+                    print("Updated ApiResponse.js")
+                    update_file(directory_name, current_directory, script_directory, "index_file_content",
+                                "index.js")  # Update index.js
+                    print("Updated index.js")
+                    update_file(directory_name, current_directory, script_directory, "app_file_content",
+                                "app.js")  # Update app.js
+                    print("Updated app.js")
 
                 i += 2  # Skip both ".b" and directory name arguments
             except Exception as e:
@@ -127,10 +142,7 @@ def extractor():
 
         elif sys.argv[i] == "-g":
             try:
-                for git_command in git_commandList:
-                    sp.run(git_command, shell=True, check=True, text=True,
-                           cwd=os.path.join(current_directory, directory_name))
-
+                run_git_commands(current_directory, directory_name)
                 gitHandler()
                 i += 1
             except Exception as e:
@@ -139,12 +151,19 @@ def extractor():
         elif sys.argv[i].startswith("-d"):
             # Extract the option from the argument
             opt = sys.argv[i][2:]
-            singleDirGen(opt)
+            single_dir_gen(current_directory, directory_name, opt)
             i += 1
         elif sys.argv[i].startswith("SAGA"):
-            # TODO: SAGA [super admin generate all] run the command -- > .b backend -g -d--pg -d--tst
-            pass
+            # Call saga function
+            saga()
+            break  # Exit loop after executing SAGA command
+        elif sys.argv[i] == "--getuser":
+            run_user_model_commands(current_directory, directory_name, script_directory)
+            update_file(directory_name, current_directory, script_directory, "user_model_content", "src/models/user.model.js")
+            print("Updated user.model.js")
+            break
         else:
             i += 1
+            break
 
 extractor()

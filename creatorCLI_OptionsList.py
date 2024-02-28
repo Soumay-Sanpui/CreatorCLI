@@ -17,6 +17,10 @@ backend_commandList = [
     "mkdir src\\routes",
 ]
 
+UsermodelGeneration_commandList = [
+    "type nul > src\\models\\user.model.js",
+]
+
 dirOptions = {
     "--mdl": "models",
     "--db": "db",
