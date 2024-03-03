@@ -20,6 +20,7 @@ backend_commandList = [
 ]
 
 base_installation_commandList = [
+    "npm init -y"
     "npm i express mongoose", 
     "npm i -D nodemon",
 ]

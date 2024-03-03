@@ -232,6 +232,7 @@ def extractor():
             return
         elif sys.argv[i].startswith("base"):
             commands_executor(current_directory,directory_name,base_installation_commandList)
+            configUpdater()
             break
         else:
             showHelpText()
