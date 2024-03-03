@@ -1,6 +1,6 @@
 # creatorCLI_OptionsList.py
 # NOTE: BLOCKED FOR TESTING PURPOSE
-node_commandList = ["npm init -y"] #, "npm i dotenv express mongoose cors bcrypt jsonwebtoken multer cloudinary", "npm i -D nodemon"
+node_commandList = ["npm init -y", "npm i dotenv express mongoose cors bcrypt jsonwebtoken multer cloudinary", "npm i -D nodemon"]
 
 backend_commandList = [
     "type nul > .env",
@@ -10,6 +10,7 @@ backend_commandList = [
     "mkdir public\\temp",
     "mkdir src",
     "mkdir src\\db",
+    "type nul > src\\db\\index.js",
     "mkdir src\\models",
     "mkdir src\\utils",
     "type nul > src\\utils\\ApiResponse.js",
@@ -18,12 +19,12 @@ backend_commandList = [
     "mkdir src\\routes",
 ]
 
-# Options for generating different model files
-UsermodelGeneration_commandList = [
-    "echo 🛠️ Creating user model file... && type nul > src\\models\\user.model.js",
-    # Add more commands for generating other user-related models here
+base_installation_commandList = [
+    "npm i express mongoose", 
+    "npm i -D nodemon",
 ]
 
+UsermodelGeneration_commandList = ["echo 🛠️ Creating user model file... && type nul > src\\models\\user.model.js",]
 PostmodelGeneration_commandList = ["echo 📝 Creating post model file... && type nul > src\\models\\post.model.js",]
 ProductCatalogmodelGeneration_commandList = ["echo 📦 Creating product catalog model file... && type nul > src\\models\\productCatalog.model.js",]
 MessagingmodelGeneration_commandList = ["echo 📨 Creating messaging model file... && type nul > src\\models\\messaging.model.js",]

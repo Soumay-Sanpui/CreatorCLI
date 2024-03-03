@@ -9,6 +9,7 @@ from creatorCLI_OptionsList import (
     dirOptions, 
     git_commandList, 
     node_commandList, 
+    base_installation_commandList,
     UsermodelGeneration_commandList, 
     PostmodelGeneration_commandList,
     ProductCatalogmodelGeneration_commandList,
@@ -23,12 +24,11 @@ from creatorCLI_OptionsList import (
 
 from creatorCLI_Extractor_Commands import (
     create_directory,
-    run_node_commands,
-    run_backend_commands,
+    commands_executor,
     update_configuration_files,
-    run_git_commands,
     single_dir_gen,
     run_model_commands,
+    showHelpText,
 )
 
 # Global variables
