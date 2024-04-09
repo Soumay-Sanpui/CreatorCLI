@@ -28,15 +28,46 @@ To get started with CreatorCLI, follow these steps:
 
     Here, `project_directory` specifies the name of the project directory, and `options` include flags and parameters for specific actions.
 
+> __NOTE: in normal installation if you try to create projcet using creator cli you have to specify the full path of creator cli installation folder.__
+
+## Steps for Global install
+
+1. **Installation**: Clone the CreatorCLI repository to your local machine by executing the following command in your terminal:
+
+    ```
+    git clone https://github.com/your-username/CreatorCLI.git
+    ```
+
+2. **Setup**: Navigate to the directory containing CreatorCLI files in your terminal:
+
+    ```
+    cd /path/to/CreatorCLI
+    ```
+3. **Alias configuration (WINDOWS)**: 
+    1. Go to Edit System Env.
+    2. Go to path.
+    3. click on Edit
+    4. In creator cli installation folder look for the file
+    ``` cc.bat ```.
+    5. copy the file path and paste it in the new field of system env. variables.
+
+4. **Creating project**: 
+    ```cc .b project_name [options]```
+
+> __NOTE: After gloabal install there is no need to write 'python CreatorCLI' every time you create a project.__
+
 🚩 Flags 🚩
 --------
 
 CreatorCLI supports the following flags:
 
 * `.b`: Indicates backend setup.
-* `.f`: Indicates frontend setup.
-* `--no-i`: Skips dependency installation.
+* `no-i`: Skips dependency installation.
 * `-g`: Performs Git-related operations.
+* `-d`: Generate custom directory.
+* `--get`: Generate custom model with full code 👩‍💻.
+* `-h / --help / -? / --info`: get help text on console.
+* `base`: get a base setup of express mongodb with all the boiler plate.
 
 🌟 Features 🌟
 -----------
@@ -59,8 +90,9 @@ CreatorCLI simplifies directory creation with the `singleDirGen()` function, all
 * `--stc`: Creates a 'static' directory.
 * `--ctr`: Creates a 'controllers' directory.
 
-To use single directory generation, execute the CreatorCLI script with the desired option. For example:
+To use single directory generation, execute the CreatorCLI script with the desired option. 
 
+For example:
 ```python creatorCLI.py [project_directory] --mdl```
 
 ### Model Generation 🗃️
@@ -82,7 +114,18 @@ To generate a specific model, use the corresponding command-line option. For exa
 
 ```python creatorCLI.py .b folder_name --getuser```
 
-This command will generate a user model in your project directory.
+ This above command will generate a user model in your project directory.
+## List of Model Commands:
+1. > python creatorCLI.py .b folder_name --getuser<br>
+1. > python creatorCLI.py .b folder_name --getpost<br>
+1. > python creatorCLI.py .b folder_name --getproductcatalog<br>
+1. > python creatorCLI.py .b folder_name --getmessaging<br>
+1. > python creatorCLI.py .b folder_name --geteventscheduling<br>
+1. > python creatorCLI.py .b folder_name --getlocationbased<br>
+1. > python creatorCLI.py .b folder_name --getcontentmanagement<br>
+1. > python creatorCLI.py .b folder_name --getfinancialtransaction<br>
+1. > python creatorCLI.py .b folder_name --getanalytics<br>
+1. > python creatorCLI.py .b folder_name --getsocialnetwork<br>
 
 ### SAGA [super admin generate all] Command ⚔️
 
