@@ -30,7 +30,7 @@ To get started with CreatorCLI, follow these steps:
 
 > __NOTE: in normal installation if you try to create projcet using creator cli you have to specify the full path of creator cli installation folder.__
 
-## Steps for Global install
+## 🌏 Steps for Global install 🛠️
 
 1. **Installation**: Clone the CreatorCLI repository to your local machine by executing the following command in your terminal:
 
@@ -68,7 +68,40 @@ CreatorCLI supports the following flags:
 * `--get`: Generate custom model with full code 👩‍💻.
 * `-h / --help / -? / --info`: get help text on console.
 * `base`: get a base setup of express mongodb with all the boiler plate.
+* `SAGA`: will generate everything you need.
 
+
+🧠 BASICS
+------------
+1. __'.b'__ : This is the most important and starting flag in the CreatorCLI tool, it marks that you want to create a backend project in the current directory.
+
+1. __'no-i'__ : If you just want the code without the installion process use this flag, this flag will skip all the dependency installation but creatorCLI will still generate all the code and folders, any manual dependency installtion will be automatically handled by CreatorCLI and other configuration will be updated according to that.
+
+1. __'base'__ : If you just need basic configuration like a simple express application with mongodb support this flag will help you in that.
+
+1. __'SAGA'__ : This is a heavy command to run as it will not only generate code but will also generate directories and will do the configuration stuff with all the depency being installed at the same time, once completed you will be having everything you need on your plate to build a full fledge backend of any kind of application with git already initialized for you.
+```
+    WHAT THE SAGA COMMAND WILL GENERATE ?
+    1. Directories:
+        1. ROUTES
+        1. PUBLIC -> with .gitkeep file
+        1. MIDDLEWARES
+        1. UTILS
+        1. CONTROLLERS
+    1. MODELS:
+        1. USERS
+    1. FILES:
+        1. .env
+        1. .gitignore (pre written)
+        1. server.js (entry point)
+        1. app.js (express file)
+        1. router/index.js (routing file)
+        1. user.model.js
+        1. post.model.js
+        1. ApiError.js
+        1. utils.js
+        1. constants.js
+```
 🌟 Features 🌟
 -----------
 
@@ -95,6 +128,7 @@ To use single directory generation, execute the CreatorCLI script with the desir
 For example:
 ```python creatorCLI.py [project_directory] --mdl```
 
+-----------------------------------------------------
 ### Model Generation 🗃️
 
 CreatorCLI facilitates model generation for various components of your application:
@@ -116,16 +150,30 @@ To generate a specific model, use the corresponding command-line option. For exa
 
  This above command will generate a user model in your project directory.
 ## List of Model Commands:
-1. > python creatorCLI.py .b folder_name --getuser<br>
-1. > python creatorCLI.py .b folder_name --getpost<br>
-1. > python creatorCLI.py .b folder_name --getproductcatalog<br>
-1. > python creatorCLI.py .b folder_name --getmessaging<br>
-1. > python creatorCLI.py .b folder_name --geteventscheduling<br>
-1. > python creatorCLI.py .b folder_name --getlocationbased<br>
-1. > python creatorCLI.py .b folder_name --getcontentmanagement<br>
-1. > python creatorCLI.py .b folder_name --getfinancialtransaction<br>
-1. > python creatorCLI.py .b folder_name --getanalytics<br>
-1. > python creatorCLI.py .b folder_name --getsocialnetwork<br>
+1. > python [full_path_of_installation_folder]/creatorCLI.py .b project_name --getuser<br>
+1. > python [full_path_of_installation_folder]/creatorCLI.py .b project_name --getpost<br>
+1. > python [full_path_of_installation_folder]/creatorCLI.py .b project_name --getproductcatalog<br>
+1. > python [full_path_of_installation_folder]/creatorCLI.py .b project_name --getmessaging<br>
+1. > python [full_path_of_installation_folder]/creatorCLI.py .b project_name --geteventscheduling<br>
+1. > python [full_path_of_installation_folder]/creatorCLI.py .b project_name --getlocationbased<br>
+1. > python [full_path_of_installation_folder]/creatorCLI.py .b project_name --getcontentmanagement<br>
+1. > python [full_path_of_installation_folder]/creatorCLI.py .b project_name --getfinancialtransaction<br>
+1. > python [full_path_of_installation_folder]/creatorCLI.py .b project_name --getanalytics<br>
+1. > python [full_path_of_installation_folder]/creatorCLI.py .b project_name --getsocialnetwork<br>
+
+## List of Model Commands for GLOBAL INSTALL
+1. > cc .b project_name --getuser<br>
+1. > cc .b project_name --getpost<br>
+1. > cc .b project_name --getproductcatalog<br>
+1. > cc .b project_name --getmessaging<br>
+1. > cc .b project_name --geteventscheduling<br>
+1. > cc .b project_name --getlocationbased<br>
+1. > cc .b project_name --getcontentmanagement<br>
+1. > cc .b project_name --getfinancialtransaction<br>
+1. > cc .b project_name --getanalytics<br>
+1. > cc .b project_name --getsocialnetwork<br>
+
+----------------------------------------------------
 
 ### SAGA [super admin generate all] Command ⚔️
 
@@ -135,11 +183,18 @@ CreatorCLI includes support for generating all the major folders and boiler-plat
 
 To generate super admin SAGA commands, use the following command-line option:
 
-```python creatorCLI.py .b folder_name SAGA```
+```
+    python [full_path_to_creatorCLI_installation]/creatorCLI.py .b folder_name SAGA
+```
 
-This command will generate SAGA commands for super admin functionalities in your backend project.
+### For Globally installed CLI.
+```
+    cc .b project_name SAGA
+```
 
-🎉 Conclusion 🎉
+This command will generate all the required things from dependencies to models to get you started with the project without any extra overhead and configuration.
+
 -------------
+🎉 Conclusion 🎉
 
 With CreatorCLI, project setup and management are streamlined, allowing you to focus on development tasks more efficiently. Explore the various features and functionalities to enhance your development workflow and accelerate project delivery. Happy coding! 🛠️
