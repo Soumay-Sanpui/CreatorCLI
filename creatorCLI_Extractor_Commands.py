@@ -137,23 +137,43 @@ def run_model_commands(current_directory, directory_name, script_directory,model
         print(f"❌ Error: {e}")
 
 def showHelpText():
-    print("Usage: cc [command] [project_name] [options]")
-    print("Commands:")
-    print("  cc -h or -? or --help or --info")
-    print("  .b project_name    : Create a backend project.")
-    print("  .f project_name    : Create a frontend project.")
-    print("Options:")
-    print("  -g                 : Perform Git-related operations.")
-    print("  --getuser          : Generate a user model.")
-    print("  --getpost          : Generate a post model.")
-    print("  --getproduct       : Generate a product catalog model.")
-    print("  --getmessage       : Generate a messaging model.")
-    print("  --getevent         : Generate an event scheduling model.")
-    print("  --getlocation      : Generate a location-based model.")
-    print("  --getcontent       : Generate a content management model.")
-    print("  --gettransaction   : Generate a financial transaction model.")
-    print("  --getanalytics     : Generate an analytics model.")
-    print("  --getsocial        : Generate a social network model.")
-    print("  -d<option>         : Create a single directory within the project.")
-    print("  SAGA               : Execute SAGA [generate].")
+
+    print(" $$$$$$\                                 $$\                          $$$$$$\  $$\       $$$$$$\ ")
+    print("$$  __$$\                                $$ |                        $$  __$$\ $$ |      \_$$  _|")
+    print("$$ /  \__| $$$$$$\   $$$$$$\   $$$$$$\ $$$$$$\    $$$$$$\   $$$$$$\  $$ /  \__|$$ |        $$ |  ")
+    print("$$ |      $$  __$$\ $$  __$$\  \____$$\\_$$  _|  $$  __$$\ $$  __$$\ $$ |      $$ |        $$ |  ")
+    print("$$ |      $$ |  \__|$$$$$$$$ | $$$$$$$ | $$ |    $$ /  $$ |$$ |  \__|$$ |      $$ |        $$ |  ")
+    print("$$ |  $$\ $$ |      $$   ____|$$  __$$ | $$ |$$\ $$ |  $$ |$$ |      $$ |  $$\ $$ |        $$ |  ")
+    print("\$$$$$$  |$$ |      \$$$$$$$\ \$$$$$$$ | \$$$$  |\$$$$$$  |$$ |      \$$$$$$  |$$$$$$$$\ $$$$$$\ ")
+    print(" \______/ \__|       \_______| \_______|  \____/  \______/ \__|       \______/ \________|\______|")
+
+# CreatorCLI Help Message
+
+# Link to Documentation (replace with actual URL)
+DOCS_URL = "https://replace_with_actual_docs_url"
+print(f"For detailed documentation, visit: {DOCS_URL}")
+
+print("\nUsage: cc .b [project_name] [options]")
+print("\nCommands:")
+print("  * cc -h or -? or --help or --info       : Display this help message.")
+print("  * .b project_name                       : Create a backend project in the specified directory.")
+print("  * (Currently not supported) .f project_name: (Not yet implemented) Create a frontend project in the specified directory.")  # Indicate frontend functionality not yet available
+
+print("\nOptions:")
+print("  * -g                                    : Perform Git-related operations (e.g., initialize repository).")
+print("  * --getuser                             : Generate a user model for your project.")
+print("  * --getpost                              : Generate a post model for your project.")
+print("  * --getproduct                          : Generate a product catalog model for your project.")
+print("  * --getmessage                           : Generate a messaging model for your project.")
+print("  * --getevent                            : Generate an event scheduling model for your project.")
+print("  * --getlocation                          : Generate a location-based model for your project.")
+print("  * --getcontent                           : Generate a content management model for your project.")
+print("  * --gettransaction                       : Generate a financial transaction model for your project.")
+print("  * --getanalytics                         : Generate an analytics model for your project.")
+print("  * --getsocial                            : Generate a social network model for your project.")
+print("  * -d<option>                             : Create a single directory within the project structure (options: mdl, db, rts, mdw, api, pg, tst, pub, tmp, utl, vw, stc, ctr).")
+print("  * no-i                                   : Skip dependency installation during project creation.")
+print("  * base                                   : Set up a basic Express.js application with MongoDB support.")
+print("  * SAGA                                   : Generate a comprehensive backend project structure with dependencies, models, and configuration (includes Git initialization).")
+
     
