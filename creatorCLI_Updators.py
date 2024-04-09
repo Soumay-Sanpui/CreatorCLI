@@ -28,11 +28,10 @@ def update_file(directory_name, current_directory, script_directory, source_key,
   file_path = os.path.join(current_directory, directory_name, destination_file)
 
   try:
-    # Ensure the destination file is writable before updating
-    if not os.access(file_path, os.W_OK):
-      os.chmod(file_path, os.stat(file_path).st_mode | 0o666)  # Make the file writable
 
-    # Write the content to the destination file
+    if not os.access(file_path, os.W_OK):
+      os.chmod(file_path, os.stat(file_path).st_mode | 0o666)  # 
+
     with open(file_path, 'w') as file:
       file.write(file_content)
     print(f"{destination_file} updated successfully in {file_path} ✨")
@@ -55,6 +54,6 @@ def update_file(directory_name, current_directory, script_directory, source_key,
   #   except Exception as e:
   #     print(f"Error updating {destination_file} in src/models directory: {e}")
 
-# This line is only needed if you want to call the function directly for testing
+# for testing
 # update_file("my_directory", os.getcwd(), "/path/to/script", "my_key", "my_file.txt")
 
