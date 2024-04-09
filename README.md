@@ -83,24 +83,34 @@ CreatorCLI supports the following flags:
 ```
     WHAT THE SAGA COMMAND WILL GENERATE ?
     1. Directories:
-        1. ROUTES
-        1. PUBLIC -> with .gitkeep file
-        1. MIDDLEWARES
-        1. UTILS
-        1. CONTROLLERS
-    1. MODELS:
-        1. USERS
-    1. FILES:
-        1. .env
-        1. .gitignore (pre written)
-        1. server.js (entry point)
-        1. app.js (express file)
-        1. router/index.js (routing file)
-        1. user.model.js
-        1. post.model.js
-        1. ApiError.js
-        1. utils.js
-        1. constants.js
+        1.1 ROUTES
+        1.2 PUBLIC -> with .gitkeep file
+        1.3 MIDDLEWARES
+        1.4 UTILS
+        1.5 CONTROLLERS
+    2. MODELS:
+        2.1 USERS
+    3. FILES:
+        3.1 .env
+        3.2 .gitignore (pre written)
+        3.3 server.js (entry point)
+        3.4 app.js (express file)
+        3.5 router/index.js (routing file)
+        3.6 user.model.js
+        3.7 post.model.js
+        3.8 ApiError.js
+        3.9 utils.js
+        3.10 constants.js
+    4. DEPENDENCIES:
+        4.1 dotenv 
+        4.2 express 
+        4.3 mongoose 
+        4.4 cors 
+        4.5 bcrypt 
+        4.6 jsonwebtoken 
+        4.7 multer 
+        4.8 cloudinary
+        4.9 nodemon (as development dependency)
 ```
 🌟 Features 🌟
 -----------
