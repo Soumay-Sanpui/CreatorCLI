@@ -1,5 +1,5 @@
 # creatorCLI_OptionsList.py
-# NOTE: BLOCKED FOR TESTING PURPOSE
+
 node_commandList = ["npm init -y", "npm i dotenv express mongoose cors bcrypt jsonwebtoken multer cloudinary", "npm i -D nodemon"]
 
 backend_commandList = [
@@ -20,9 +20,10 @@ backend_commandList = [
 ]
 
 base_installation_commandList = [
-    "npm init -y"
+    "npm init -y",
     "npm i express mongoose", 
     "npm i -D nodemon",
+    "code .",
 ]
 
 UsermodelGeneration_commandList = ["echo 🛠️ Creating user model file... && type nul > src\\models\\user.model.js",]
